@@ -1,0 +1,1220 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>SETEC POS</title>
+  <!-- Fonts -->
+  <!-- Credit by - THARYVIREAK -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/source-sans-3@5.0.12/index.css" integrity="sha256-tXJfXfp6Ewt1ilPzLDtQnJV4hclT9XuaZUKyUvmyr+Q=" crossorigin="anonymous" />
+  <!-- Third Party Plugins -->
+  <link rel="stylesheet" href="overlayscrollbars.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" integrity="sha256-9kPW/n5nn53j4WMRYAxe9c1rCY96Oogo/MKSVdKzPmI=" crossorigin="anonymous" />
+  <!-- Admin CSS -->
+  <!-- Credit by - THARYVIREAK -->
+  <link rel="stylesheet" href="main.css">
+</head>
+<body class="layout-fixed sidebar-expand-lg bg-body-tertiary">
+  <div class="app-wrapper">
+    <div class="sidebar-brand">
+
+        <span class="brand-text fw-light">Dashboard</span>
+        <!--end::Brand Text-->
+      </a>
+      <!--end::Brand Link-->
+    </div>
+    <aside class="app-sidebar bg-body-secondary shadow" data-bs-theme="dark">
+        <div class="sidebar-brand">
+
+            <span class="brand-text fw-light">SETEC STUDENT</span>
+            <!--end::Brand Text-->
+          </a>
+          <!--end::Brand Link-->
+        </div>
+      <div class="sidebar-wrapper">
+        <nav class="mt-2">
+          <ul class="nav sidebar-menu flex-column" data-lte-toggle="treeview" role="menu" data-accordion="false">
+            <li class="nav-item">
+              <a href="#" class="nav-link" onclick="showSection('dashboard')">
+                <i class="nav-icon fa-solid fa-gauge-high"></i>
+                <p>Dashboard</p>
+              </a>
+            </li>
+              <li class="nav-item has-treeview">
+                <a href="#products" class="nav-link">
+                    <i class="nav-icon bi bi-box"></i>
+                    <p>Products</p>
+                </a>
+                <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                        <a href="#add-product" class="nav-link" onclick="showSection('addProduct')"> 
+                            <i class=" bi bi-plus nav-icon"></i>
+                            <p>Add Product</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#list-product" class="nav-link" onclick="showSection('listProduct')">
+                            <i class=" bi bi-list nav-icon"></i>
+                            <p>List Product</p>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item has-treeview">
+                <a href="#category" class="nav-link">
+                    <i class="nav-icon bi bi-archive"></i>
+                    <p>Category</p>
+                </a>
+                <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                        <a href="#add-category" class="nav-link" onclick="showSection('addCategory')">
+                            <i class="bi bi-plus nav-icon"></i>
+                            <p>Add Category</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#list-category" class="nav-link" >
+                            <i class="bi bi-list nav-icon"></i>
+                            <p>List Category</p>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+             <li class="nav-item has-treeview">
+              <a href="#orders" class="nav-link">
+                  <i class="nav-icon bi bi-cart"></i>
+                  <p>Orders</p>
+              </a>
+              <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                      <a href="#add-order" class="nav-link" onclick="showSection('addOrder')">
+                          <i class="bi bi-plus nav-icon"></i>
+                          <p>Add Orders</p>
+                      </a>
+                  </li>
+                  <li class="nav-item">
+                      <a href="#list-order" class="nav-link" onclick="showSection('listOrders')">
+                          <i class="bi bi-list nav-icon"></i>
+                          <p>List Orders</p>
+                      </a>
+                  </li>
+              </ul>
+          </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                <i class="nav-icon bi bi-people-fill"></i>
+                <p>
+                  Users
+                  <i class="nav-arrow bi bi-chevron-right"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="#add-order" class="nav-link">
+                        <i class="bi bi-plus nav-icon"></i>
+                        <p>Add Users</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#list-order" class="nav-link">
+                        <i class="bi bi-list nav-icon"></i>
+                        <p>List Users</p>
+                    </a>
+                </li>
+            </ul>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link" onclick="showSection('sitting')">
+                <i class="nav-icon bi bi-gear-fill"></i>
+                <p>Setting</p>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </aside>
+    <main class="app-main">
+      <div class="app-content" id="dashboard" style="display:block;" >
+        <div class="container-fluid">
+            <!--begin::Row-->
+            <div class="row">
+              <!--begin::Col-->
+              <div class="col-lg-3 col-6">
+                <!--begin::Small Box Widget 1-->
+                <div class="small-box text-bg-primary">
+                  <div class="inner">
+                    <h3>0</h3>
+                    <p>Product</p>
+                  </div>
+                  <svg   class="small-box-icon"
+                  fill="currentColor"
+                  viewBox="0 0 54 54"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
+                  ><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="m24 35.33a.81.81 0 0 1 .81.71v11.52a2.44 2.44 0 0 1 -2.32 2.44h-16.42a2.45 2.45 0 0 1 -2.44-2.28v-11.57a.81.81 0 0 1 .71-.81h19.66zm23.61 0a.82.82 0 0 1 .81.71v11.52a2.44 2.44 0 0 1 -2.33 2.44h-16.42a2.44 2.44 0 0 1 -2.43-2.28v-11.57a.81.81 0 0 1 .71-.81h19.61zm-29.92 3.37-.09.07-4.6 5.06-2.11-2a.62.62 0 0 0 -.79-.07l-.08.07-.87.78a.49.49 0 0 0 -.07.71l.07.08 3 2.83a1.25 1.25 0 0 0 .87.36 1.15 1.15 0 0 0 .87-.36l5.52-5.84a.63.63 0 0 0 .06-.72l-.06-.07-.87-.78a.61.61 0 0 0 -.85-.12zm23.61 0-.09.07-4.66 5.06-2.11-2a.61.61 0 0 0 -.78-.07l-.09.07-.87.78a.49.49 0 0 0 -.06.71l.06.08 3 2.83a1.25 1.25 0 0 0 .87.36 1.14 1.14 0 0 0 .87-.36l5.56-5.89a.65.65 0 0 0 0-.72v-.07l-.87-.78a.61.61 0 0 0 -.83-.07zm-18.76-11.52a2.36 2.36 0 0 1 2.27 2.28v2.61a.81.81 0 0 1 -.66.81h-21.39a.78.78 0 0 1 -.76-.7v-2.55a2.38 2.38 0 0 1 2.13-2.44h18.41zm25.18 0a2.36 2.36 0 0 1 2.28 2.28v2.61a.81.81 0 0 1 -.66.81h-21.4a.78.78 0 0 1 -.75-.71v-2.54a2.38 2.38 0 0 1 2.13-2.44h18.4zm-12-17a.81.81 0 0 1 .8.71v11.48a2.44 2.44 0 0 1 -2.28 2.44h-16.37a2.46 2.46 0 0 1 -2.44-2.29v-11.52a.81.81 0 0 1 .71-.8h19.62zm-6.27 3.37-.08.07-4.66 5.06-2.11-2a.61.61 0 0 0 -.78-.07l-.09.07-.87.78a.5.5 0 0 0 -.07.71l.07.08 3 2.82a1.22 1.22 0 0 0 .87.37 1.13 1.13 0 0 0 .87-.37l5.53-5.83a.65.65 0 0 0 .05-.72l-.05-.07-.87-.78a.62.62 0 0 0 -.77-.15zm6.31-11.55a2.44 2.44 0 0 1 2.43 2.28v2.61a.83.83 0 0 1 -.71.81h-22.86a.81.81 0 0 1 -.81-.7v-2.56a2.44 2.44 0 0 1 2.27-2.44z">
+
+                  </path></g>
+                </svg>
+                  
+                  
+                  <a
+                  onclick="showSection('listProduct')"
+                    href="#"
+                    class="small-box-footer link-light link-underline-opacity-0 link-underline-opacity-50-hover"
+                  >
+                    More info <i class="bi bi-link-45deg"></i>
+                  </a>
+                </div>
+                <!--end::Small Box Widget 1-->
+              </div>
+              <!--end::Col-->
+              <div class="col-lg-3 col-6">
+                <!--begin::Small Box Widget 2-->
+                <div class="small-box text-bg-success">
+                  <div class="inner">
+                    <h3>4</h3>
+                    <p>Categories</p>
+                  </div>
+                  <svg class="small-box-icon"
+                    fill="currentColor"
+                    viewBox="0 0 54 54"
+                    xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden="true">
+                      <g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M45.2,2.3H6.8C4.2,2.3,2,4.5,2,7.1v4.8c0,0.9,0.7,1.6,1.6,1.6h44.8c0.9,0,1.6-0.7,1.6-1.6V7.1 C50,4.5,47.8,2.3,45.2,2.3z"></path> <path d="M46.6,17.5H5.5c-0.9,0-1.6,0.7-1.6,1.6v26.4c0,2.6,2.2,4.8,4.8,4.8h34.8c2.6,0,4.8-2.2,4.8-4.8V19.1 C48.2,18.2,47.5,17.5,46.6,17.5z M32.8,25.5H19.2c-1.1,0-2-0.9-2-2s0.9-2,2-2h13.6c1.1,0,2,0.9,2,2C34.8,24.6,33.9,25.5,32.8,25.5z"></path> </g>
+                    </svg>
+                  <a
+                    href="#"
+                    class="small-box-footer link-light link-underline-opacity-0 link-underline-opacity-50-hover"
+                  >
+                    More info <i class="bi bi-link-45deg"></i>
+                  </a>
+                </div>
+                <!--end::Small Box Widget 2-->
+              </div>
+              <!--end::Col-->
+              <div class="col-lg-3 col-6">
+                <!--begin::Small Box Widget 3-->
+                <div class="small-box text-bg-warning">
+                  <div class="inner">
+                    <h3>10</h3>
+                    <p>Users</p>
+                  </div>
+                  <svg class="small-box-icon"
+                  fill="currentColor"
+                  viewBox="0 0 54 54"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true">
+                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M50,43v2.2c0,2.6-2.2,4.8-4.8,4.8H6.8C4.2,50,2,47.8,2,45.2V43c0-5.8,6.8-9.4,13.2-12.2 c0.2-0.1,0.4-0.2,0.6-0.3c0.5-0.2,1-0.2,1.5,0.1c2.6,1.7,5.5,2.6,8.6,2.6s6.1-1,8.6-2.6c0.5-0.3,1-0.3,1.5-0.1 c0.2,0.1,0.4,0.2,0.6,0.3C43.2,33.6,50,37.1,50,43z M26,2c6.6,0,11.9,5.9,11.9,13.2S32.6,28.4,26,28.4s-11.9-5.9-11.9-13.2 S19.4,2,26,2z"></path> </g></svg>
+                  <a
+                    href="#"
+                    class="small-box-footer link-dark link-underline-opacity-0 link-underline-opacity-50-hover"
+                  >
+                    More info <i class="bi bi-link-45deg"></i>
+                  </a>
+                </div>
+                <!--end::Small Box Widget 3-->
+              </div>
+              <!--end::Col-->
+              <div class="col-lg-3 col-6">
+                <!--begin::Small Box Widget 4-->
+                <div class="small-box text-bg-danger">
+                  <div class="inner">
+                    <h3>0</h3>
+                    <p>Orders</p>
+                  </div>
+                  <svg class="small-box-icon"
+                  fill="currentColor"
+                  viewBox="0 0 54 54"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true">
+                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g> <path d="M20.1,26H44c0.7,0,1.4-0.5,1.5-1.2l4.4-15.4c0.3-1.1-0.5-2-1.5-2H11.5l-0.6-2.3c-0.3-1.1-1.3-1.8-2.3-1.8 H4.6c-1.3,0-2.5,1-2.6,2.3C1.9,7,3.1,8.2,4.4,8.2h2.3l7.6,25.7c0.3,1.1,1.2,1.8,2.3,1.8h28.2c1.3,0,2.5-1,2.6-2.3 c0.1-1.4-1.1-2.6-2.4-2.6H20.2c-1.1,0-2-0.7-2.3-1.7v-0.1C17.4,27.5,18.6,26,20.1,26z"></path> <circle cx="20.6" cy="44.6" r="4"></circle> <circle cx="40.1" cy="44.6" r="4"></circle> </g> </g>
+                  </svg>
+                  <a
+                  onclick="showSection('listOrders')"
+                    href="#"
+                    class="small-box-footer link-light link-underline-opacity-0 link-underline-opacity-50-hover"
+                  >
+                    More info <i class="bi bi-link-45deg"></i>
+                  </a>
+                </div>
+                <!--end::Small Box Widget 4-->
+              </div>
+              <!--end::Col-->
+            </div>
+          <div class="mt-4">
+            <h3>Products List</h3>
+            <table class="table table-bordered table-striped" id="dashboardProductTable">
+              <thead>
+                <tr>
+                  <th>No</th>
+                  <th>Product Name</th>
+                  <th>Price</th>
+                  <th>Qty</th>
+                  <th>Category</th>
+                  <th>Description</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+
+          <div class="mt-4">
+            <h3>Orders List</h3>
+            <table class="table table-bordered table-striped" id="dashboardOrderTable">
+              <thead>
+                <tr>
+                  <th>No</th>
+                  <th>Order Name</th>
+                  <th>QTY</th>
+                  <th>Date</th>
+                  <th>Product</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="app-content" id="addProduct" style="display:none;">
+        <div class="container-fluid">
+          <h2>Add Product</h2>
+          <input type="hidden" id="editProductIndex" value="-1" />
+          <form onsubmit="handleProductForm(event)">
+            <input type="text" id="productName" class="form-control mb-2" placeholder="Product Name" required>
+            <input type="number" id="productPrice" class="form-control mb-2" placeholder="Price" required>
+            <input type="number" id="productQty" class="form-control mb-2" placeholder="Quantity" required>
+            <select id="category" class="form-control mb-2" required>
+              <option value="">Select Category</option>
+            </select>
+            <textarea id="productDesc" class="form-control mb-2" placeholder="Description"></textarea>
+            <button type="submit" class="btn btn-primary" id="productBtn">Save Product</button>
+          </form>
+
+          <h3 class="mt-4">List Products</h3>
+          <table class="table table-bordered table-striped" id="productTable">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Product Name</th>
+                <th>Price</th>
+                <th>Qty</th>
+                <th>Category</th>
+                <th>Description</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+      <div class="app-content" id="listProduct" style="display:none;">
+        <div class="container-fluid">
+          <h2>Product List</h2>
+          <table class="table table-bordered table-striped" id="productTable2">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Product Name</th>
+                <th>Price</th>
+                <th>Qty</th>
+                <th>Category</th>
+                <th>Description</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+      <div class="app-content" id="addCategory" style="display:none;">
+        <div class="container-fluid">
+          <h2>Add Category</h2>
+          <input type="hidden" id="editCategoryIndex" value="-1" />
+          <form onsubmit="handleCategoryForm(event)">
+            <input type="text" id="categoryName" class="form-control mb-2" placeholder="Category Name" required>
+            <button type="submit" class="btn btn-primary" id="categoryBtn">Save Category</button>
+          </form>
+
+          <h3 class="mt-4">List Categories</h3>
+          <table class="table table-bordered table-striped" id="categoryTable">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Category Name</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+      <div class="app-content" id="listCategory" style="display:none;">
+        <div class="container-fluid">
+          <h2>Category List</h2>
+          <table class="table table-bordered table-striped" id="categoryTable2">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Category Name</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+      <div class="app-content" id="addOrder" style="display:none;">
+        <div class="container-fluid">
+          <h2>Add Order</h2>
+          <input type="hidden" id="editOrderIndex" value="-1" />
+          <form onsubmit="handleOrderForm(event)">
+            <input type="text" id="orderName" class="form-control mb-2" placeholder="Order Name" required>
+            <input type="number" id="orderqty" class="form-control mb-2" placeholder="Quantity" required>
+            <input type="date" id="orderDate" class="form-control mb-2" required>
+            <select id="orderProduct" class="form-control mb-2" required>
+              <option value="">Select Product</option>
+            </select>
+            <button type="submit" class="btn btn-primary" id="orderBtn">Save Order</button>
+          </form>
+
+          <h3 class="mt-4">List Orders</h3>
+          <table class="table table-bordered table-striped" id="orderTable">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Order Name</th>
+                <th>QTY</th>
+                <th>Date</th>
+                <th>Product</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+      <div class="app-content" id="listOrders" style="display:none;">
+        <div class="container-fluid">
+          <h2>Order List</h2>
+          <table class="table table-bordered table-striped" id="orderTable2">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Order Name</th>
+                <th>QTY</th>
+                <th>Date</th>
+                <th>Product</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+      <div class="app-content" id="addUser" style="display:none;">
+        <div class="container-fluid">
+          <h2>Add User</h2>
+          <input type="hidden" id="editUserIndex" value="-1" />
+          <form onsubmit="handleUserForm(event)">
+            <input type="text" id="userName" class="form-control mb-2" placeholder="User Name" required>
+            <input type="email" id="userEmail" class="form-control mb-2" placeholder="Email" required>
+            <input type="text" id="userPhone" class="form-control mb-2" placeholder="Phone">
+            <button type="submit" class="btn btn-primary" id="userBtn">Add User</button>
+          </form>
+
+          <h3 class="mt-4">List Users</h3>
+          <table class="table table-bordered table-striped" id="userTable">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>User Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="app-content" id="listUsers" style="display:none;">
+        <div class="container-fluid">
+          <h2>User List</h2>
+          <table class="table table-bordered table-striped" id="userTable2">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>User Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="app-content" id="sitting" style="display:none;">
+        <div class="container-fluid">
+          <h2>Setting</h2>
+          <p>Some setting here...</p>
+        </div>
+      </div>
+      <!-- END SITTING SECTION -->
+    </main>
+  </div>
+  <footer class="main-footer">
+      <div class="float-right d-none d-sm-inline">Version 8.2 ISO</div>
+      <strong>&copy; yat joub copiright puk hg</strong>
+      <strong>&copy; Credid anh ah meas kach SU20</strong>
+  </footer>
+</div>
+  </div>
+
+  <!-- Scripts -->
+  <script defer src="overlayscrollbars.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+  <script src="main.js"></script>
+  <script>
+    (function (global, factory) {
+      typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
+      typeof define === 'function' && define.amd ? define(['exports'], factory) :
+      (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.adminlte = {}));
+    })(this, (function (exports) { 'use strict';
+
+      const domContentLoadedCallbacks = [];
+      const onDOMContentLoaded = (callback) => {
+        if (document.readyState === 'loading') {
+          if (!domContentLoadedCallbacks.length) {
+            document.addEventListener('DOMContentLoaded', () => {
+              for (const callback of domContentLoadedCallbacks) {
+                callback();
+              }
+            });
+          }
+          domContentLoadedCallbacks.push(callback);
+        } else {
+          callback();
+        }
+      };
+
+      function setCookie(name, value, days = 365) {
+        const date = new Date(); // Fixed from NewDate
+        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+        const expires = "expires=" + date.toUTCString();
+        document.cookie = name + "=" + encodeURIComponent(JSON.stringify(value)) + ";" + expires + ";path=/";
+      }
+
+      function getCookie(name) {
+        const nameEQ = name + "=";
+        const ca = document.cookie.split(';');
+        for (let i = 0; i < ca.length; i++) {
+          let c = ca[i];
+          while (c.charAt(0) === ' ') c = c.substring(1, c.length);
+          if (c.indexOf(nameEQ) === 0) {
+            return JSON.parse(decodeURIComponent(c.substring(nameEQ.length, c.length)));
+          }
+        }
+        return [];
+      }
+
+      function initializeData() {
+        ["products", "orders", "categories", "users"].forEach(key => {
+          if (!document.cookie.includes(key)) {
+            setCookie(key, []);
+          }
+        });
+      }
+
+      onDOMContentLoaded(function() {
+        initializeData();
+        const products = getCookie("products");
+        const orders = getCookie("orders");
+        const categories = getCookie("categories");
+        const users = getCookie("users");
+
+        loadDashboardProducts(products);
+        loadDashboardCategories(categories);
+        loadDashboardOrders(orders);
+        loadDashboardUsers(users);
+        updateDashboardCounts(products, orders, categories, users);
+
+        showSection("dashboard");
+        updateDropdowns();
+      });
+
+      const sections = ["dashboard", "addProduct", "listProduct", "addCategory", "listCategory", 
+                       "addOrder", "listOrders", "addUser", "listUsers", "sitting"];
+
+      function showSection(section) {
+        sections.forEach(s => {
+          const el = document.getElementById(s);
+          if (el) el.style.display = s === section ? "block" : "none";
+        });
+
+        if (section === "dashboard") {
+          const products = getCookie("products");
+          const orders = getCookie("orders");
+          const categories = getCookie("categories");
+          const users = getCookie("users");
+          loadDashboardProducts(products);
+          loadDashboardCategories(categories);
+          loadDashboardOrders(orders);
+          loadDashboardUsers(users);
+          updateDashboardCounts(products, orders, categories, users);
+        }
+        if (section === "addProduct") {
+          loadProducts();
+          updateDropdowns();
+        }
+        if (section === "listProduct") loadProducts2();
+        if (section === "addCategory") loadCategories();
+        if (section === "listCategory") loadCategories2();
+        if (section === "addOrder") {
+          loadOrders();
+          updateDropdowns();
+        }
+        if (section === "listOrders") loadOrders2();
+        if (section === "addUser") loadUsers();
+        if (section === "listUsers") loadUsers2();
+      }
+
+      function updateDashboardCounts(products, orders, categories, users) {
+        document.getElementById("productCount").innerText = products.length;
+        document.getElementById("orderCount").innerText = orders.length;
+        document.getElementById("categoryCount").innerText = categories.length;
+        document.getElementById("userCount").innerText = users.length;
+      }
+
+      // PRODUCT LOGIC
+      function handleProductForm(event) {
+        event.preventDefault();
+        const idx = parseInt(document.getElementById("editProductIndex").value, 10);
+        if (idx >= 0) updateProduct(idx);
+        else saveProduct();
+      }
+
+      function saveProduct() {
+        let products = getCookie("products");
+        const product = {
+          name: document.getElementById("productName").value,
+          price: document.getElementById("productPrice").value,
+          qty: parseInt(document.getElementById("productQty").value, 10),
+          cat: document.getElementById("category").value,
+          desc: document.getElementById("productDesc").value
+        };
+        products.push(product);
+        setCookie("products", products);
+        alert("Product Saved");
+        resetProductForm();
+        loadProducts();
+        loadDashboardProducts(products);
+        updateDashboardCounts(products, getCookie("orders"), getCookie("categories"), getCookie("users"));
+      }
+
+      function loadProducts() {
+        const products = getCookie("products");
+        const tbody = document.querySelector("#productTable tbody");
+        tbody.innerHTML = "";
+        products.forEach((p, i) => {
+          const row = document.createElement("tr");
+          row.innerHTML = `
+            <td>${i + 1}</td>
+            <td>${p.name}</td>
+            <td>${p.price}</td>
+            <td>${p.qty}</td>
+            <td>${p.cat}</td>
+            <td>${p.desc}</td>
+            <td>
+              <button class="btn btn-sm btn-warning" onclick="editProduct(${i})">Edit</button>
+              <button class="btn btn-sm btn-danger" onclick="deleteProduct(${i})">Delete</button>
+            </td>
+          `;
+          tbody.appendChild(row);
+        });
+      }
+
+      function loadProducts2() {
+        const products = getCookie("products");
+        const tbody = document.querySelector("#productTable2 tbody");
+        tbody.innerHTML = "";
+        products.forEach((p, i) => {
+          const row = document.createElement("tr");
+          row.innerHTML = `
+            <td>${i + 1}</td>
+            <td>${p.name}</td>
+            <td>${p.price}</td>
+            <td>${p.qty}</td>
+            <td>${p.cat}</td>
+            <td>${p.desc}</td>
+            <td>
+              <button class="btn btn-sm btn-warning" onclick="editProductInAdd(${i})">Edit</button>
+              <button class="btn btn-sm btn-danger" onclick="deleteProduct(${i})">Delete</button>
+            </td>
+          `;
+          tbody.appendChild(row);
+        });
+      }
+
+      function loadDashboardProducts(products) {
+        const tbody = document.querySelector("#dashboardProductTable tbody");
+        tbody.innerHTML = "";
+        products.forEach((p, i) => {
+          const row = document.createElement("tr");
+          row.innerHTML = `
+            <td>${i + 1}</td>
+            <td>${p.name}</td>
+            <td>${p.price}</td>
+            <td>${p.qty}</td>
+            <td>${p.cat}</td>
+            <td>${p.desc}</td>
+          `;
+          tbody.appendChild(row);
+        });
+      }
+
+      function editProduct(index) {
+        const products = getCookie("products");
+        if (index >= 0 && index < products.length) {
+          const p = products[index];
+          document.getElementById("productName").value = p.name;
+          document.getElementById("productPrice").value = p.price;
+          document.getElementById("productQty").value = p.qty;
+          document.getElementById("category").value = p.cat;
+          document.getElementById("productDesc").value = p.desc;
+          document.getElementById("editProductIndex").value = index;
+          document.getElementById("productBtn").textContent = "Update Product";
+          showSection("addProduct");
+        }
+      }
+
+      function editProductInAdd(index) {
+        editProduct(index);
+      }
+
+      function updateProduct(index) {
+        let products = getCookie("products");
+        if (index >= 0 && index < products.length) {
+          products[index] = {
+            name: document.getElementById("productName").value,
+            price: document.getElementById("productPrice").value,
+            qty: parseInt(document.getElementById("productQty").value, 10),
+            cat: document.getElementById("category").value,
+            desc: document.getElementById("productDesc").value
+          };
+          setCookie("products", products);
+          alert("Product Updated");
+          resetProductForm();
+          loadProducts();
+          loadProducts2();
+          loadDashboardProducts(products);
+          updateDashboardCounts(products, getCookie("orders"), getCookie("categories"), getCookie("users"));
+        } else {
+          alert("Invalid product index");
+        }
+      }
+
+      function deleteProduct(index) {
+        if (!confirm("Are you sure you want to delete this product?")) return;
+        let products = getCookie("products");
+        if (index >= 0 && index < products.length) {
+          products.splice(index, 1);
+          setCookie("products", products);
+          loadProducts();
+          loadProducts2();
+          loadDashboardProducts(products);
+          updateDashboardCounts(products, getCookie("orders"), getCookie("categories"), getCookie("users"));
+          alert("Product Deleted");
+        } else {
+          alert("Invalid product index");
+        }
+      }
+
+      function resetProductForm() {
+        document.getElementById("editProductIndex").value = "-1";
+        document.getElementById("productName").value = "";
+        document.getElementById("productPrice").value = "";
+        document.getElementById("productQty").value = "";
+        document.getElementById("category").value = "";
+        document.getElementById("productDesc").value = "";
+        document.getElementById("productBtn").textContent = "Save Product";
+      }
+        
+      // CATEGORY LOGIC
+      function handleCategoryForm(event) {
+        event.preventDefault();
+        const idx = parseInt(document.getElementById("editCategoryIndex").value, 10);
+        if (idx >= 0) updateCategory(idx);
+        else saveCategory();
+      }
+
+      function saveCategory() {
+        let categories = getCookie("categories");
+        const catName = document.getElementById("categoryName").value.trim();
+        if (catName && !categories.includes(catName)) {
+          categories.push(catName);
+          setCookie("categories", categories);
+          alert("Category Saved");
+          resetCategoryForm();
+          loadCategories();
+          loadDashboardCategories(categories);
+          updateDashboardCounts(getCookie("products"), getCookie("orders"), categories, getCookie("users"));
+          updateDropdowns();
+        } else {
+          alert("Category already exists or invalid!");
+        }
+      }
+
+      function loadCategories() {
+        const categories = getCookie("categories");
+        const tbody = document.querySelector("#categoryTable tbody");
+        tbody.innerHTML = "";
+        categories.forEach((c, i) => {
+          const row = document.createElement("tr");
+          row.innerHTML = `
+            <td>${i + 1}</td>
+            <td>${c}</td>
+            <td>
+              <button class="btn btn-sm btn-warning" onclick="editCategory(${i})">Edit</button>
+              <button class="btn btn-sm btn-danger" onclick="deleteCategory(${i})">Delete</button>
+            </td>
+          `;
+          tbody.appendChild(row);
+        });
+      }
+
+      function loadCategories2() {
+        const categories = getCookie("categories");
+        const tbody = document.querySelector("#categoryTable2 tbody");
+        tbody.innerHTML = "";
+        categories.forEach((c, i) => {
+          const row = document.createElement("tr");
+          row.innerHTML = `
+            <td>${i + 1}</td>
+            <td>${c}</td>
+            <td>
+              <button class="btn btn-sm btn-warning" onclick="editCategoryInAdd(${i})">Edit</button>
+              <button class="btn btn-sm btn-danger" onclick="deleteCategory(${i})">Delete</button>
+            </td>
+          `;
+          tbody.appendChild(row);
+        });
+      }
+
+      function loadDashboardCategories(categories) {
+        const tbody = document.querySelector("#dashboardCategoryTable tbody");
+        tbody.innerHTML = "";
+        categories.forEach((c, i) => {
+          const row = document.createElement("tr");
+          row.innerHTML = `
+            <td>${i + 1}</td>
+            <td>${c}</td>
+          `;
+          tbody.appendChild(row);
+        });
+      }
+
+      function editCategory(index) {
+        const categories = getCookie("categories");
+        if (index >= 0 && index < categories.length) {
+          document.getElementById("categoryName").value = categories[index];
+          document.getElementById("editCategoryIndex").value = index;
+          document.getElementById("categoryBtn").textContent = "Update Category";
+          showSection("addCategory");
+        }
+      }
+
+      function editCategoryInAdd(index) {
+        editCategory(index);
+      }
+
+      function updateCategory(index) {
+        let categories = getCookie("categories");
+        if (index >= 0 && index < categories.length) {
+          const newCat = document.getElementById("categoryName").value.trim();
+          if (newCat && (!categories.includes(newCat) || categories[index] === newCat)) {
+            categories[index] = newCat;
+            setCookie("categories", categories);
+            alert("Category Updated");
+            resetCategoryForm();
+            loadCategories();
+            loadCategories2();
+            loadDashboardCategories(categories);
+            updateDashboardCounts(getCookie("products"), getCookie("orders"), categories, getCookie("users"));
+            updateDropdowns();
+          } else {
+            alert("Category already exists or invalid!");
+          }
+        } else {
+          alert("Invalid category index");
+        }
+      }
+
+      function deleteCategory(index) {
+        if (!confirm("Are you sure you want to delete this category?")) return;
+        let categories = getCookie("categories");
+        if (index >= 0 && index < categories.length) {
+          categories.splice(index, 1);
+          setCookie("categories", categories);
+          loadCategories();
+          loadCategories2();
+          loadDashboardCategories(categories);
+          updateDashboardCounts(getCookie("products"), getCookie("orders"), categories, getCookie("users"));
+          updateDropdowns();
+          alert("Category Deleted");
+        } else {
+          alert("Invalid category index");
+        }
+      }
+
+      function resetCategoryForm() {
+        document.getElementById("editCategoryIndex").value = "-1";
+        document.getElementById("categoryName").value = "";
+        document.getElementById("categoryBtn").textContent = "Save Category";
+      }
+
+      // ORDER LOGIC
+      function handleOrderForm(event) {
+        event.preventDefault();
+        const idx = parseInt(document.getElementById("editOrderIndex").value, 10);
+        if (idx >= 0) updateOrder(idx);
+        else saveOrder();
+      }
+
+      function saveOrder() {
+        let orders = getCookie("orders");
+        let products = getCookie("products");
+        const orderProductName = document.getElementById("orderProduct").value;
+        const orderQty = parseInt(document.getElementById("orderqty").value, 10);
+
+        const productIndex = products.findIndex(p => p.name === orderProductName);
+        if (productIndex === -1) {
+          alert("Product not found!");
+          return;
+        }
+        if (products[productIndex].qty < orderQty) {
+          alert("Insufficient stock!");
+          return;
+        }
+
+        products[productIndex].qty -= orderQty;
+        const order = {
+          name: document.getElementById("orderName").value,
+          qty: orderQty,
+          date: document.getElementById("orderDate").value,
+          product: orderProductName
+        };
+        orders.push(order);
+        setCookie("orders", orders);
+        setCookie("products", products);
+        alert("Order Saved");
+        resetOrderForm();
+        loadOrders();
+        loadDashboardOrders(orders);
+        loadDashboardProducts(products);
+        updateDashboardCounts(products, orders, getCookie("categories"), getCookie("users"));
+      }
+
+      function loadOrders() {
+        const orders = getCookie("orders");
+        const tbody = document.querySelector("#orderTable tbody");
+        tbody.innerHTML = "";
+        orders.forEach((o, i) => {
+          const row = document.createElement("tr");
+          row.innerHTML = `
+            <td>${i + 1}</td>
+            <td>${o.name}</td>
+            <td>${o.qty}</td>
+            <td>${o.date}</td>
+            <td>${o.product}</td>
+            <td>
+              <button class="btn btn-sm btn-warning" onclick="editOrder(${i})">Edit</button>
+              <button class="btn btn-sm btn-danger" onclick="deleteOrder(${i})">Delete</button>
+            </td>
+          `;
+          tbody.appendChild(row);
+        });
+      }
+
+      function loadOrders2() {
+        const orders = getCookie("orders");
+        const tbody = document.querySelector("#orderTable2 tbody");
+        tbody.innerHTML = "";
+        orders.forEach((o, i) => {
+          const row = document.createElement("tr");
+          row.innerHTML = `
+            <td>${i + 1}</td>
+            <td>${o.name}</td>
+            <td>${o.qty}</td>
+            <td>${o.date}</td>
+            <td>${o.product}</td>
+            <td>
+              <button class="btn btn-sm btn-warning" onclick="editOrderInAdd(${i})">Edit</button>
+              <button class="btn btn-sm btn-danger" onclick="deleteOrder(${i})">Delete</button>
+            </td>
+          `;
+          tbody.appendChild(row);
+        });
+      }
+
+      function loadDashboardOrders(orders) {
+        const tbody = document.querySelector("#dashboardOrderTable tbody");
+        tbody.innerHTML = "";
+        orders.forEach((o, i) => {
+          const row = document.createElement("tr");
+          row.innerHTML = `
+            <td>${i + 1}</td>
+            <td>${o.name}</td>
+            <td>${o.qty}</td>
+            <td>${o.date}</td>
+            <td>${o.product}</td>
+          `;
+          tbody.appendChild(row);
+        });
+      }
+
+      function editOrder(index) {
+        const orders = getCookie("orders");
+        if (index >= 0 && index < orders.length) {
+          const o = orders[index];
+          document.getElementById("orderName").value = o.name;
+          document.getElementById("orderqty").value = o.qty;
+          document.getElementById("orderDate").value = o.date;
+          document.getElementById("orderProduct").value = o.product;
+          document.getElementById("editOrderIndex").value = index;
+          document.getElementById("orderBtn").textContent = "Update Order";
+          showSection("addOrder");
+        }
+      }
+
+      function editOrderInAdd(index) {
+        editOrder(index);
+      }
+
+      function updateOrder(index) {
+        let orders = getCookie("orders");
+        if (index >= 0 && index < orders.length) {
+          orders[index] = {
+            name: document.getElementById("orderName").value,
+            qty: parseInt(document.getElementById("orderqty").value, 10),
+            date: document.getElementById("orderDate").value,
+            product: document.getElementById("orderProduct").value
+          };
+          setCookie("orders", orders);
+          alert("Order Updated");
+          resetOrderForm();
+          loadOrders();
+          loadOrders2();
+          loadDashboardOrders(orders);
+          updateDashboardCounts(getCookie("products"), orders, getCookie("categories"), getCookie("users"));
+        } else {
+          alert("Invalid order index");
+        }
+      }
+
+      function deleteOrder(index) {
+        if (!confirm("Are you sure you want to delete this order?")) return;
+        let orders = getCookie("orders");
+        if (index >= 0 && index < orders.length) {
+          orders.splice(index, 1);
+          setCookie("orders", orders);
+          loadOrders();
+          loadOrders2();
+          loadDashboardOrders(orders);
+          updateDashboardCounts(getCookie("products"), orders, getCookie("categories"), getCookie("users"));
+          alert("Order Deleted");
+        } else {
+          alert("Invalid order index");
+        }
+      }
+
+      function resetOrderForm() {
+        document.getElementById("editOrderIndex").value = "-1";
+        document.getElementById("orderName").value = "";
+        document.getElementById("orderqty").value = "";
+        document.getElementById("orderDate").value = "";
+        document.getElementById("orderProduct").value = "";
+        document.getElementById("orderBtn").textContent = "Save Order";
+      }
+
+      // USER LOGIC
+      function handleUserForm(event) {
+        event.preventDefault();
+        const idx = parseInt(document.getElementById("editUserIndex").value, 10);
+        if (idx >= 0) updateUser(idx);
+        else saveUser();
+      }
+
+      function saveUser() {
+        let users = getCookie("users");
+        const user = {
+          name: document.getElementById("userName").value,
+          email: document.getElementById("userEmail").value,
+          phone: document.getElementById("userPhone").value
+        };
+        users.push(user);
+        setCookie("users", users);
+        alert("User Saved");
+        resetUserForm();
+        loadUsers();
+        loadDashboardUsers(users);
+        updateDashboardCounts(getCookie("products"), getCookie("orders"), getCookie("categories"), users);
+      }
+
+      function loadUsers() {
+        const users = getCookie("users");
+        const tbody = document.querySelector("#userTable tbody");
+        tbody.innerHTML = "";
+        users.forEach((u, i) => {
+          const row = document.createElement("tr");
+          row.innerHTML = `
+            <td>${i + 1}</td>
+            <td>${u.name}</td>
+            <td>${u.email}</td>
+            <td>${u.phone || ""}</td>
+            <td>
+              <button class="btn btn-sm btn-warning" onclick="editUser(${i})">Edit</button>
+              <button class="btn btn-sm btn-danger" onclick="deleteUser(${i})">Delete</button>
+            </td>
+          `;
+          tbody.appendChild(row);
+        });
+      }
+
+      function loadUsers2() {
+        const users = getCookie("users");
+        const tbody = document.querySelector("#userTable2 tbody");
+        tbody.innerHTML = "";
+        users.forEach((u, i) => {
+          const row = document.createElement("tr");
+          row.innerHTML = `
+            <td>${i + 1}</td>
+            <td>${u.name}</td>
+            <td>${u.email}</td>
+            <td>${u.phone || ""}</td>
+            <td>
+              <button class="btn btn-sm btn-warning" onclick="editUserInAdd(${i})">Edit</button>
+              <button class="btn btn-sm btn-danger" onclick="deleteUser(${i})">Delete</button>
+            </td>
+          `;
+          tbody.appendChild(row);
+        });
+      }
+
+      function loadDashboardUsers(users) {
+        const tbody = document.querySelector("#dashboardUserTable tbody");
+        tbody.innerHTML = "";
+        users.forEach((u, i) => {
+          const row = document.createElement("tr");
+          row.innerHTML = `
+            <td>${i + 1}</td>
+            <td>${u.name}</td>
+            <td>${u.email}</td>
+            <td>${u.phone || ""}</td>
+          `;
+          tbody.appendChild(row);
+        });
+      }
+
+      function editUser(index) {
+        const users = getCookie("users");
+        if (index >= 0 && index < users.length) {
+          const u = users[index];
+          document.getElementById("userName").value = u.name;
+          document.getElementById("userEmail").value = u.email;
+          document.getElementById("userPhone").value = u.phone || "";
+          document.getElementById("editUserIndex").value = index;
+          document.getElementById("userBtn").textContent = "Update User";
+          showSection("addUser");
+        }
+      }
+
+      function editUserInAdd(index) {
+        editUser(index);
+      }
+
+      function updateUser(index) {
+        let users = getCookie("users");
+        if (index >= 0 && index < users.length) {
+          users[index] = {
+            name: document.getElementById("userName").value,
+            email: document.getElementById("userEmail").value,
+            phone: document.getElementById("userPhone").value
+          };
+          setCookie("users", users);
+          alert("User Updated");
+          resetUserForm();
+          loadUsers();
+          loadUsers2();
+          loadDashboardUsers(users);
+          updateDashboardCounts(getCookie("products"), getCookie("orders"), getCookie("categories"), users);
+        } else {
+          alert("Invalid user index");
+        }
+      }
+
+      function deleteUser(index) {
+        if (!confirm("Are you sure you want to delete this user?")) return;
+        let users = getCookie("users");
+        if (index >= 0 && index < users.length) {
+          users.splice(index, 1);
+          setCookie("users", users);
+          loadUsers();
+          loadUsers2();
+          loadDashboardUsers(users);
+          updateDashboardCounts(getCookie("products"), getCookie("orders"), getCookie("categories"), users);
+          alert("User Deleted");
+        } else {
+          alert("Invalid user index");
+        }
+      }
+
+      function resetUserForm() {
+        document.getElementById("editUserIndex").value = "-1";
+        document.getElementById("userName").value = "";
+        document.getElementById("userEmail").value = "";
+        document.getElementById("userPhone").value = "";
+        document.getElementById("userBtn").textContent = "Save User";
+      }
+
+      function updateDropdowns() {
+        const categories = getCookie("categories");
+        const products = getCookie("products");
+        const categoryDropdown = document.getElementById("category");
+        const productDropdown = document.getElementById("orderProduct");
+
+        if (categoryDropdown) {
+          categoryDropdown.innerHTML = '<option value="">Select Category</option>' + 
+            categories.map(c => `<option value="${c}">${c}</option>`).join("");
+        }
+        if (productDropdown) {
+          productDropdown.innerHTML = '<option value="">Select Product</option>' + 
+            products.map(p => `<option value="${p.name}">${p.name}</option>`).join("");
+        }
+      }
+
+      window.showSection = showSection;
+      window.handleProductForm = handleProductForm;
+      window.editProduct = editProduct;
+      window.deleteProduct = deleteProduct;
+      window.editProductInAdd = editProductInAdd;
+      window.handleCategoryForm = handleCategoryForm;
+      window.editCategory = editCategory;
+      window.deleteCategory = deleteCategory;
+      window.editCategoryInAdd = editCategoryInAdd;
+      window.handleOrderForm = handleOrderForm;
+      window.editOrder = editOrder;
+      window.deleteOrder = deleteOrder;
+      window.editOrderInAdd = editOrderInAdd;
+      window.handleUserForm = handleUserForm;
+      window.editUser = editUser;
+      window.deleteUser = deleteUser;
+      window.editUserInAdd = editUserInAdd;
+    }));
+  </script>
+</body>
+</html>
